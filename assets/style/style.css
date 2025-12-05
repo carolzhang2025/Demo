@@ -6,6 +6,8 @@ body {
   padding: 0;
 }
 :root {
+  /* Header 高度變數 (預設 100px) */
+  --sw-header-height: 100px;
   --sw-main-basic: #ff8800;
   --sw-main-dark: #702d00;
   --sw-topbar-color: #4b4d4e;
@@ -13,17 +15,24 @@ body {
   --sw-bg-dark: #202020;
   --sw-body-font-family: -apple-system, Arial, "Segoe UI", Helvetica Neue, sans-serif;
   --sw-title-font-family: -apple-system, "Segoe UI", Helvetica Neue, Arial, sans-serif;
-  --sw-topbar-fontsize: 0.95rem;
-  --sw-navbar-fontsize: 1.05rem;
+  --sw-topbar-fontsize: 0.9rem;
+  --sw-navbar-fontsize: 1rem;
   --sw-nav-h6-fontsize: 1rem;
   --sw-nav-menu-fontsize: 0.95rem;
-  --sw-h1-fontsize: 3.3rem;
-  --sw-h2-fontsize: 3rem;
+  --sw-banner-p-fontsize: 1.25rem;
+  --sw-h1-fontsize: 3rem;
+  --sw-h2-fontsize: 2.25rem;
   --sw-h3-fontsize: 2rem;
-  --sw-banner-fontsize: 1.25rem;
+  --sw-pagecontent-fontsize: 1.125rem;
+  --sw-footer-fontsize: 0.9rem;
 
-  /* 新增：Header 高度變數 (預設 100px) */
-  --sw-header-height: 100px;
+  /* mobile */
+  --sw-m-banner-fontsize: 1.25rem;
+  --sw-m-h1-fontsize: 2rem;
+  --sw-m-h2-fontsize: 1.05rem;
+  --sw-m-h3-fontsize: 2rem;
+  --sw-m-pagecontent-fontsize: 1.125rem;
+  --sw-m-footer-fontsize: 0.9rem;
 }
 body {
   overflow-x: hidden;
@@ -64,7 +73,7 @@ a:focus {
   z-index: 1030;
 }
 
-/* 當 Header Wrapper 被 JS 加入 menu-active 類別時 (滑入選單時) */
+/* Desktop：當 Header Wrapper 滑入選單時，js加入 menu-active 類別 */
 @media (min-width: 992px) {
   .header-wrapper.menu-active ~ .body-overlay {
     opacity: 1;
@@ -76,7 +85,7 @@ a:focus {
   }
 }
 
-/* offcanvas-backdrop 強制隱藏 (電腦版) --- */
+/* Desktop：offcanvas-backdrop 強制隱藏 --- */
 @media (min-width: 992px) {
   .offcanvas-backdrop {
     display: none !important;
@@ -84,7 +93,7 @@ a:focus {
   }
 }
 
-/* Offcanvas 狀態控制 (電腦版) --- */
+/* Desktop：Offcanvas 狀態控制--- */
 @media (min-width: 992px) {
   #offcanvasNavbar.offcanvas.show {
     visibility: hidden !important;
@@ -147,12 +156,12 @@ a:focus {
   font-family: var(--sw-title-font-family);
   height: 50px;
 }
+/* Desktop： */
 @media (min-width: 992px) {
   .navbar {
     height: 68px;
   }
 }
-
 .navbar-nav .nav-link {
   padding-left: 1rem !important;
   padding-right: 1rem !important;
@@ -215,6 +224,18 @@ a:focus {
   border-right: 1px solid #e0e0e0;
   min-width: 160px;
 }
+/* 螢幕寬度小於1200px時，選單允許換行 */
+@media (max-width: 1200px) {
+  .dropdown-mega .dropdown-groups-wrapper {
+    flex-wrap: wrap;
+  }
+  .dropdown-mega .dropdown-group {
+    flex: 0 0 33.33%;
+    border-right: none;
+    margin-bottom: 20px;
+  }
+}
+
 .dropdown-mega .dropdown-group:last-child {
   border-right: none;
 }
@@ -264,18 +285,7 @@ a:focus {
   opacity: 1;
 }
 
-@media (max-width: 1200px) {
-  .dropdown-mega .dropdown-groups-wrapper {
-    flex-wrap: wrap;
-  }
-  .dropdown-group {
-    flex: 0 0 33.33%;
-    border-right: none;
-    margin-bottom: 20px;
-  }
-}
-
-/* 滑入展開 (Hover Trigger) 修正 (電腦版) */
+/* Desktop：修正滑入展開 (Hover Trigger) */
 @media (min-width: 992px) {
   .dropdown-mega > .dropdown-toggle::after {
     display: none;
@@ -294,7 +304,7 @@ a:focus {
   }
 }
 
-/* --- Custom Hamburger Button Styles (手機版) --- */
+/* Mobile：Custom Hamburger Button Styles  --- */
 .mobile-menu-btn {
   background: none;
   border: none;
@@ -321,7 +331,6 @@ a:focus {
   transform: rotate(0deg);
   transition: 0.5s ease-in-out;
 }
-
 .hamburger span {
   display: block;
   position: absolute;
@@ -334,15 +343,12 @@ a:focus {
   transform: rotate(0deg);
   transition: 0.25s ease-in-out;
 }
-
 .hamburger span:nth-child(1) {
   top: 0px;
 }
-
 .hamburger span:nth-child(2) {
   top: 7.5px; /* Center bar */
 }
-
 .hamburger span:nth-child(3) {
   top: 15px;
 }
@@ -357,14 +363,13 @@ a:focus {
   opacity: 0;
   left: -25px; /* Move middle bar out */
 }
-
 .mobile-menu-btn.active .hamburger span:nth-child(3) {
   top: 7.5px;
   transform: rotate(-135deg);
 }
 
 /* 手機版 Offcanvas (Accordion) */
-/* Offcanvas 本身調整：讓它從固定的 Navbar 下方開始展開 */
+/* Mobile/Tablet：Offcanvas 本身調整：讓它從固定的 Navbar 下方開始展開 */
 @media (max-width: 991.98px) {
   .offcanvas.mobile-menu-custom {
     position: fixed; /* 變為 fixed */
@@ -378,7 +383,6 @@ a:focus {
   .offcanvas.mobile-menu-custom.show {
     transform: translateX(0);
   }
-
   /* 手機版 Navbar 固定在頂部 */
   .navbar {
     display: flex !important; /* 確保可見 */
@@ -401,7 +405,6 @@ a:focus {
     height: 0;
   }
 }
-
 .mobile-menu-custom {
   width: 100% !important;
 }
@@ -412,7 +415,6 @@ a:focus {
   padding: 0 1rem !important; /* 關鍵：移除上下的 padding，保留左右的 */
   display: flex;
   align-items: center; /* 確保內容垂直置中 */
-
   /* --- 關鍵修正 --- */
   position: sticky;
   top: 0;
@@ -420,7 +422,6 @@ a:focus {
   background-color: white; /* 確保固定時不會透視 */
   justify-content: flex-start !important;
 }
-
 /* 修正 2: 確保只有 offcanvas-body 的內容是滾動的 */
 .offcanvas-body {
   padding-top: 0 !important;
@@ -465,62 +466,11 @@ a:focus {
 main {
   padding-top: 50px;
 }
+/* Desktop */
 @media (min-width: 992px) {
   main {
     /* 使用變數，確保與 Header 高度一致 */
     padding-top: var(--sw-header-height);
-  }
-}
-
-/* Hero Section & Breadcrumbs */
-.hero-section {
-  height: 500px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  padding: 10px;
-}
-@media (min-width: 992px) {
-  .hero-section {
-    padding: 0;
-  }
-}
-
-.hero-section h1 {
-  font-family: var(--sw-title-font-family);
-  font-size: 2rem;
-}
-@media (min-width: 992px) {
-  .hero-section h1 {
-    font-size: var(--sw-h1-fontsize);
-  }
-}
-.hero-section p {
-  font-family: var(--sw-body-font-family);
-  font-size: 1.05rem;
-  font-weight: 400;
-}
-@media (min-width: 992px) {
-  .hero-section p {
-    font-size: var(--sw-banner-fontsize);
-  }
-}
-
-/* --- Breadcrumb Wrapper 優化 --- */
-.breadcrumb-wrapper {
-  display: none;
-}
-@media (min-width: 992px) {
-  .breadcrumb-wrapper {
-    font-size: 0.85rem;
-    display: block;
-    font-weight: 400;
-    /* 修改：改為絕對定位，讓它脫離 Flex 排列，固定在左上角 */
-    position: absolute;
-    top: 30px;
-    left: 12px; /* 對齊 container padding (Bootstrap container padding-x is 0.75rem ~ 12px) */
-    z-index: 10;
   }
 }
 
@@ -533,13 +483,68 @@ main {
   color: #fff;
   text-decoration: underline;
 }
-
 .breadcrumb-item.active {
   color: #fff;
   font-weight: 400;
 }
 .breadcrumb-item + .breadcrumb-item::before {
   color: rgba(255, 255, 255, 0.6);
+}
+
+/* Hero Section & Breadcrumbs */
+.hero-section {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+}
+/* Desktop */
+@media (min-width: 992px) {
+  .hero-section {
+    padding: 0;
+  }
+}
+
+.hero-section h1 {
+  font-family: var(--sw-title-font-family);
+  font-size: 2rem;
+}
+/* Desktop */
+@media (min-width: 992px) {
+  .hero-section h1 {
+    font-size: var(--sw-h1-fontsize);
+  }
+}
+.hero-section p {
+  font-family: var(--sw-body-font-family);
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+/* Desktop */
+@media (min-width: 992px) {
+  .hero-section p {
+    font-size: var(--sw-banner-p-fontsize);
+  }
+}
+
+/* --- Breadcrumb Wrapper 優化 --- */
+.breadcrumb-wrapper {
+  display: none;
+}
+/* Desktop */
+@media (min-width: 992px) {
+  .breadcrumb-wrapper {
+    font-size: 0.85rem;
+    display: block;
+    font-weight: 400;
+    /* 修改：改為絕對定位，讓它脫離 Flex 排列，固定在左上角 */
+    position: absolute;
+    top: 30px;
+    left: 12px; /* 對齊 container padding (Bootstrap container padding-x is 0.75rem ~ 12px) */
+    z-index: 10;
+  }
 }
 
 /* --- Hero Banner Content --- */
@@ -554,6 +559,7 @@ main {
 }
 
 /* RWD 調整 */
+/* Mobile/Tablet */
 @media (max-width: 991.98px) {
   .hero-section {
     min-height: auto;
@@ -567,4 +573,29 @@ main {
     max-width: 100%;
     font-size: 1.1rem;
   }
+}
+/* 內容 */
+main .page-content h2 {
+  font-size: var(--sw-h2-fontsize);
+  color: #202020;
+  margin-bottom: 1rem;
+  line-height: 1.6 !important;
+}
+main .page-content p {
+  font-size: var(--sw-pagecontent-fontsize);
+  color: #202020;
+  line-height: 1.9;
+}
+main .page-content .bg-gray {
+  background-color: #f3f4f5;
+}
+@media (min-width: 992px) {
+}
+
+/**
+=== 4. footer ================= */
+footer {
+  font-size: var(--sw-footer-fontsize);
+  background-color: var(--sw-main-basic);
+  color: rgb(214, 214, 214);
 }
