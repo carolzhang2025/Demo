@@ -21,14 +21,14 @@ body {
   --sw-nav-menu-fontsize: 0.95rem;
   --sw-banner-p-fontsize: 1.25rem;
   --sw-h1-fontsize: 3rem;
-  --sw-h2-fontsize: 2.25rem;
+  --sw-h2-fontsize: 2.1rem;
   --sw-h3-fontsize: 2rem;
-  --sw-pagecontent-fontsize: 1.125rem;
+  --sw-pagecontent-fontsize: 1.1rem;
   --sw-footer-fontsize: 0.9rem;
 
   /* mobile */
-  --sw-m-banner-fontsize: 1.25rem;
-  --sw-m-h1-fontsize: 2rem;
+  --sw-m-banner-fontsize: 1.1rem;
+  --sw-m-h1-fontsize: 1.7rem;
   --sw-m-h2-fontsize: 1.05rem;
   --sw-m-h3-fontsize: 2rem;
   --sw-m-pagecontent-fontsize: 1.125rem;
@@ -103,6 +103,13 @@ a:focus {
   body.offcanvas-open {
     overflow: auto !important;
     padding-right: 0 !important;
+  }
+}
+/* Mobile/Tablet First( */
+@media (max-width: 991.98px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
@@ -490,45 +497,6 @@ main {
 .breadcrumb-item + .breadcrumb-item::before {
   color: rgba(255, 255, 255, 0.6);
 }
-
-/* Hero Section & Breadcrumbs */
-.hero-section {
-  height: 500px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  padding: 10px;
-}
-/* Desktop */
-@media (min-width: 992px) {
-  .hero-section {
-    padding: 0;
-  }
-}
-
-.hero-section h1 {
-  font-family: var(--sw-title-font-family);
-  font-size: 2rem;
-}
-/* Desktop */
-@media (min-width: 992px) {
-  .hero-section h1 {
-    font-size: var(--sw-h1-fontsize);
-  }
-}
-.hero-section p {
-  font-family: var(--sw-body-font-family);
-  font-size: 1.05rem;
-  font-weight: 400;
-}
-/* Desktop */
-@media (min-width: 992px) {
-  .hero-section p {
-    font-size: var(--sw-banner-p-fontsize);
-  }
-}
-
 /* --- Breadcrumb Wrapper 優化 --- */
 .breadcrumb-wrapper {
   display: none;
@@ -547,6 +515,42 @@ main {
   }
 }
 
+/* Hero Section & Breadcrumbs */
+.hero-section {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+}
+/* Desktop */
+@media (min-width: 992px) {
+  .hero-section {
+    padding: 0;
+  }
+}
+.hero-section h1 {
+  font-family: var(--sw-title-font-family);
+  font-size: var(--sw-m-h1-fontsize);
+  line-height: 1.5;
+}
+.hero-section p {
+  font-family: var(--sw-body-font-family);
+  font-size: var(--sw-m-banner-fontsize);
+  font-weight: 400;
+}
+/* Desktop */
+@media (min-width: 992px) {
+  .hero-section h1 {
+    font-size: var(--sw-h1-fontsize);
+    line-height: 1.5;
+  }
+  .hero-section p {
+    font-size: var(--sw-banner-p-fontsize);
+  }
+}
+
 /* --- Hero Banner Content --- */
 .hero-banner-content {
   width: 100%;
@@ -558,22 +562,6 @@ main {
   max-width: 90%;
 }
 
-/* RWD 調整 */
-/* Mobile/Tablet */
-@media (max-width: 991.98px) {
-  .hero-section {
-    min-height: auto;
-    padding-top: 20px;
-    padding-bottom: 40px;
-  }
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  .hero-desc {
-    max-width: 100%;
-    font-size: 1.1rem;
-  }
-}
 /* 內容 */
 main .page-content h2 {
   font-size: var(--sw-h2-fontsize);
@@ -581,10 +569,11 @@ main .page-content h2 {
   margin-bottom: 1rem;
   line-height: 1.6 !important;
 }
-main .page-content p {
+main .page-content p,
+main .page-content ul li {
   font-size: var(--sw-pagecontent-fontsize);
   color: #202020;
-  line-height: 1.9;
+  line-height: 1.8;
 }
 main .page-content .bg-gray {
   background-color: #f3f4f5;
