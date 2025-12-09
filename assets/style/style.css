@@ -21,17 +21,17 @@ body {
   --sw-nav-menu-fontsize: 0.95rem;
   --sw-banner-p-fontsize: 1.25rem;
   --sw-h1-fontsize: 3rem;
-  --sw-h2-fontsize: 2.1rem;
-  --sw-h3-fontsize: 2rem;
+  --sw-h2-fontsize: 2rem;
+  --sw-h3-fontsize: 1.5rem;
   --sw-pagecontent-fontsize: 1.1rem;
   --sw-footer-fontsize: 0.9rem;
 
   /* mobile */
   --sw-m-banner-fontsize: 1.1rem;
   --sw-m-h1-fontsize: 1.7rem;
-  --sw-m-h2-fontsize: 1.05rem;
+  --sw-m-h2-fontsize: 1.2rem;
   --sw-m-h3-fontsize: 2rem;
-  --sw-m-pagecontent-fontsize: 1.125rem;
+  --sw-m-pagecontent-fontsize: 1.05rem;
   --sw-m-footer-fontsize: 0.9rem;
 }
 body {
@@ -483,7 +483,7 @@ main {
 
 .breadcrumb-item a {
   color: #fff;
-  text-decoration: none;
+  /* text-decoration: none; */
   transition: color 0.2s;
 }
 .breadcrumb-item a:hover {
@@ -564,21 +564,31 @@ main {
 
 /* 內容 */
 main .page-content h2 {
-  font-size: var(--sw-h2-fontsize);
+  font-size: var(--sw-m-h2-fontsize);
   color: #202020;
   margin-bottom: 1rem;
-  line-height: 1.6 !important;
+  line-height: 1.6;
 }
 main .page-content p,
 main .page-content ul li {
-  font-size: var(--sw-pagecontent-fontsize);
+  font-size: var(--sw-m-pagecontent-fontsize);
   color: #202020;
   line-height: 1.8;
 }
 main .page-content .bg-gray {
   background-color: #f3f4f5;
 }
+/* Desktop First */
 @media (min-width: 992px) {
+  main .page-content h2 {
+    font-size: var(--sw-h2-fontsize);
+    line-height: 1.6;
+  }
+  main .page-content p,
+  main .page-content ul li {
+    font-size: var(--sw-pagecontent-fontsize);
+    line-height: 1.7;
+  }
 }
 
 /**
@@ -587,4 +597,133 @@ footer {
   font-size: var(--sw-footer-fontsize);
   background-color: var(--sw-main-basic);
   color: rgb(214, 214, 214);
+}
+
+... (在 Hero Section 樣式之後) ...
+
+/* RWD 調整 */
+@media (max-width: 991.98px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-desc {
+    max-width: 100%;
+    font-size: 1.1rem;
+  }
+}
+
+}
+
+/**
+=== 4. Footer ======================= */
+.footer-custom {
+  background-color: var(--sw-bg-dark); /* 使用 CSS 變數中的暗色背景 */
+  color: #c9c9c9; /* Light gray for body text */
+}
+
+/* 頂部 padding 調整，模仿圖片 */
+.footer-custom > .container:first-child {
+  padding-top: 5rem !important; /* Larger top padding */
+  padding-bottom: 3rem !important;
+}
+
+/* Branding */
+.footer-logo-custom {
+  /* 將 Logo 圖片濾鏡為白色，以確保在深色背景下可見 */
+  filter: brightness(0) invert(1);
+  height: 25px !important;
+}
+.footer-tagline {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  max-width: 80%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.footer-desc {
+  max-width: 85%;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #b0b0b0; /* Lighter gray than body text */
+}
+
+/* Social Links */
+.footer-social-links a {
+  color: #b0b0b0 !important;
+  transition: color 0.2s;
+}
+.footer-social-links a:hover {
+  color: #fff !important;
+}
+
+/* Contact Info (Icons) */
+.footer-contact-info p {
+  font-size: 0.9rem;
+  color: #c9c9c9;
+}
+.footer-contact-info i {
+  /* 模仿圖片中的圖標與文字對齊 */
+  width: 20px;
+  text-align: center;
+  margin-right: 5px;
+  color: #c9c9c9; 
+}
+
+/* Columns */
+.footer-column-title {
+  color: #fff; /* White title */
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #3d3d3d; /* Separator line from image */
+}
+.footer-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-link-list li {
+  margin-bottom: 0.4rem;
+}
+.footer-link-list li a {
+  color: #c9c9c9;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.footer-link-list li a:hover {
+  color: var(--sw-main-basic); /* Hover effect with accent color */
+  text-decoration: underline;
+}
+
+/* Copyright Row */
+.footer-copyright-row {
+  border-top: 1px solid #3d3d3d;
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+  font-size: 0.85rem;
+  color: #b0b0b0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .footer-custom > .container:first-child {
+      padding-top: 3rem !important;
+      padding-bottom: 2rem !important;
+    }
+    .footer-tagline, .footer-desc {
+      max-width: 100%;
+    }
+    /* 在手機版，在品牌區塊下方加一條分隔線 */
+    .footer-social-links {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #3d3d3d; 
+    }
 }
