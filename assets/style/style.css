@@ -587,7 +587,10 @@ main .page-content .bg-gray {
   main .page-content p,
   main .page-content ul li {
     font-size: var(--sw-pagecontent-fontsize);
-    line-height: 1.7;
+    line-height: 1.8;
+  }
+  main .page-content ul li {
+    line-height: 2.1;
   }
 }
 
@@ -599,7 +602,7 @@ footer {
   color: rgb(214, 214, 214);
 }
 
-... (在 Hero Section 樣式之後) ...
+/* ... (在 Hero Section 樣式之後) ... */
 
 /* RWD 調整 */
 @media (max-width: 991.98px) {
@@ -615,8 +618,6 @@ footer {
     max-width: 100%;
     font-size: 1.1rem;
   }
-}
-
 }
 
 /**
@@ -671,7 +672,7 @@ footer {
   width: 20px;
   text-align: center;
   margin-right: 5px;
-  color: #c9c9c9; 
+  color: #c9c9c9;
 }
 
 /* Columns */
@@ -713,17 +714,18 @@ footer {
 
 /* Mobile adjustments */
 @media (max-width: 767.98px) {
-    .footer-custom > .container:first-child {
-      padding-top: 3rem !important;
-      padding-bottom: 2rem !important;
-    }
-    .footer-tagline, .footer-desc {
-      max-width: 100%;
-    }
-    /* 在手機版，在品牌區塊下方加一條分隔線 */
-    .footer-social-links {
-      padding-bottom: 20px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #3d3d3d; 
-    }
+  .footer-custom > .container:first-child {
+    padding-top: 3rem !important;
+    padding-bottom: 2rem !important;
+  }
+  .footer-tagline,
+  .footer-desc {
+    max-width: 100%;
+  }
+  /* 在手機版，在品牌區塊下方加一條分隔線 */
+  .footer-social-links {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3d3d3d;
+  }
 }
