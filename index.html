@@ -17,16 +17,29 @@
       <div class="top-bar d-none d-lg-block border-bottom">
         <div class="container">
           <ul class="nav justify-content-end small">
-            <li class="nav-item"><a class="nav-link text-secondary" href="#">Support</a></li>
-            <li class="nav-item"><a class="nav-link text-secondary" href="#">Orders & Licenses</a></li>
-            <li class="nav-item"><a class="nav-link text-secondary" href="#">Contact Us</a></li>
-            <li class="nav-item"><a class="nav-link text-dark fw-bold" href="#">Sign In</a></li>
+            <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Orders & Licenses</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="#">Sign In</a></li>
           </ul>
         </div>
       </div>
 
+      <!-- Search Bar -->
+      <div id="fullWidthSearch" class="full-width-search-bar">
+        <div class="container-fluid search-content-wrapper">
+          <div class="search-input-group input-group">
+            <!-- <i class="fa-solid fa-magnifying-glass search-icon"></i> -->
+            <input type="text" class="search-input-field" placeholder="Search by product name or keyword" />
+            <button type="submit" class="btn btn-link" aria-label="Submit search"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
+            <button id="closeSearchBtn" class="close-search-btn">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+      </div>
       <!-- Navbar --><!-- Main Desktop List-->
-      <nav class="navbar navbar-expand-lg bg-white shadow-sm main-nav-container p-0">
+      <nav class="navbar navbar-expand-lg bg-white shadow-sm main-nav-container">
         <div class="container">
           <a class="navbar-brand fw-bold fs-3 text-dark me-auto" href="#"> <img src="./assets/images/logo_Senwaiy.svg" alt="Senwaiy" height="46" class="d-inline-block d-inline-block align-middle me-1 mb-1" />Senwaiy </a>
           <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -39,13 +52,13 @@
                       <div class="dropdown-group">
                         <h6 class="dropdown-group-title">Our Products</h6>
                         <ul class="dropdown-list">
-                          <li class="dropdown-item fw-bold"><a href="#">Senwaiy</a></li>
-                          <li class="dropdown-item"><a href="#">Automatic Universal Gateway (AUG)</a></li>
-                          <li class="dropdown-item"><a href="#">Controller Gateway (CGW)</a></li>
-                          <li class="dropdown-item"><a href="#">Inspec</a></li>
-                          <li class="dropdown-item"><a href="#">Message Gateway System (MGS)</a></li>
-                          <li class="dropdown-item"><a href="#">Modbus Gateway</a></li>
-                          <li class="dropdown-item"><a href="#">Report Generator System (RGS)</a></li>
+                          <li class="dropdown-item fw-bold"><a href="./senwaiy/product-overview-senwaiy.html">Senwaiy</a></li>
+                          <li class="dropdown-item"><a href="./senwaiy/aug.html">Automatic Universal Gateway (AUG)</a></li>
+                          <li class="dropdown-item"><a href="./senwaiy/cgw.html">Controller Gateway (CGW)</a></li>
+                          <li class="dropdown-item"><a href="./senwaiy/inspec.html">Inspec</a></li>
+                          <li class="dropdown-item"><a href="./senwaiy/mgs.html">Message Gateway System (MGS)</a></li>
+                          <li class="dropdown-item"><a href="./senwaiy/modbus-gateway.html">Modbus Gateway</a></li>
+                          <li class="dropdown-item"><a href="./senwaiy/rgs.html">Report Generator System (RGS)</a></li>
                         </ul>
                       </div>
                       <div class="dropdown-group">
@@ -141,7 +154,7 @@
                       <div class="dropdown-group">
                         <h6 class="dropdown-group-title">Our Partners</h6>
                         <ul class="dropdown-list">
-                          <li class="dropdown-item"><a href="#">Alliance Partners</a></li>
+                          <li class="dropdown-item"><a href="partners/alliance-partners.html">Alliance Partners</a></li>
                           <li class="dropdown-item"><a href="#">Channel Partners</a></li>
                           <li class="dropdown-item"><a href="#">System Integrators</a></li>
                         </ul>
@@ -165,7 +178,7 @@
                       <div class="dropdown-group">
                         <h6 class="dropdown-group-title">Resource Hub</h6>
                         <ul class="dropdown-list">
-                          <li class="dropdown-item"><a href="#">Document Library</a></li>
+                          <li class="dropdown-item"><a href="resource-hub/document-library.html">Document Library</a></li>
                           <li class="dropdown-item"><a href="#">Software Download Center</a></li>
                           <li class="dropdown-item"><a href="#">Training & Certification Courses</a></li>
                         </ul>
@@ -182,8 +195,8 @@
                       <div class="dropdown-group">
                         <h6 class="dropdown-group-title">About Us</h6>
                         <ul class="dropdown-list">
-                          <li class="dropdown-item"><a href="#">About Senwaiy</a></li>
-                          <li class="dropdown-item"><a href="#">Locations</a></li>
+                          <li class="dropdown-item"><a href="about/about.html">About Senwaiy</a></li>
+                          <li class="dropdown-item"><a href="about/locations.html">Locations</a></li>
                           <li class="dropdown-item"><a href="#">News Room</a></li>
                         </ul>
                       </div>
@@ -194,7 +207,7 @@
             </ul>
           </div>
 
-          <button class="btn btn-link text-dark p-0 ms-3 d-none d-lg-block" aria-label="Search">
+          <button id="openSearchBtn" class="btn btn-link text-dark p-0 ms-3 d-none d-lg-block" aria-label="Search">
             <i class="fas fa-search fs-5"></i>
           </button>
 
@@ -210,7 +223,7 @@
     </header>
 
     <!-- 遮罩 -->
-    <div class="body-overlay"></div>
+    <div id="searchBodyOverlay" class="body-overlay"></div>
 
     <!-- mobile List-->
     <div class="offcanvas offcanvas-start mobile-menu-custom" tabindex="-1" id="offcanvasNavbar">
@@ -570,7 +583,7 @@
                 <h2 class="expert-card-title fw-bold">Connect with Our Experts</h2>
                 <p class="expert-card-text">Wherever you are in your digital transformation journey, Senwaiy can provide expert assistance.</p>
                 <p class="expert-card-text mb-4">Contact us today and let our expert team craft the ideal solution tailored to your needs.</p>
-                <a href="#" class="expert-card-button btn fw-bold btn fw-bold px-4 py-2">Let's Talk</a>
+                <a href="contact.html" class="expert-card-button btn fw-bold btn fw-bold px-4 py-2">Let's Talk</a>
               </div>
             </div>
           </div>
@@ -612,31 +625,31 @@
               <div class="col-12 col-md-6 mb-6 mb-md-0">
                 <h6 class="footer-column-title">Products & Solution</h6>
                 <ul class="footer-link-list">
-                  <li><a href="#">Automatic Universal Gateway (AUG)</a></li>
-                  <li><a href="#">Controller Gateway (CGW)</a></li>
-                  <li><a href="#">Inspec</a></li>
-                  <li><a href="#">Message Gateway System (MGS)</a></li>
-                  <li><a href="#">Modbus Gateway</a></li>
-                  <li><a href="#">Report Generator System (RGS)</a></li>
+                  <li><a href="./senwaiy/aug.html">Automatic Universal Gateway (AUG)</a></li>
+                  <li><a href="./senwaiy/cgw.html">Controller Gateway (CGW)</a></li>
+                  <li><a href="./senwaiy/inspec.html">Inspec</a></li>
+                  <li><a href="./senwaiy/mgs.html">Message Gateway System (MGS)</a></li>
+                  <li><a href="./senwaiy/modbus-gateway.html">Modbus Gateway</a></li>
+                  <li><a href="./senwaiy/rgs.html">Report Generator System (RGS)</a></li>
                 </ul>
               </div>
 
               <div class="col-12 col-md-3 mb-3 mb-md-0">
                 <h6 class="footer-column-title">Partners</h6>
                 <ul class="footer-link-list">
-                  <li><a href="#">Program Overview</a></li>
-                  <li><a href="#">Alliance Partners</a></li>
-                  <li><a href="#">Channel Partners</a></li>
-                  <li><a href="#">System Integrators</a></li>
+                  <li><a href="./senwaiy/partner/plan-overview.html">Program Overview</a></li>
+                  <li><a href="./senwaiy/partners/alliance-partners.html">Alliance Partners</a></li>
+                  <li><a href="./senwaiy/partners/partners/ channel-partners.html">Channel Partners</a></li>
+                  <!-- <li><a href="#">System Integrators</a></li> -->
                 </ul>
               </div>
 
               <div class="col-12 col-md-3 mb-3 mb-md-0">
                 <h6 class="footer-column-title">Company</h6>
                 <ul class="footer-link-list">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Locations</a></li>
-                  <li><a href="#">News Room</a></li>
+                  <li><a href="./senwaiy/about/about.html">About Us</a></li>
+                  <li><a href="./senwaiy/about/locations.html">Locations</a></li>
+                  <li><a href="./senwaiy/about/news.html">News Room</a></li>
                 </ul>
               </div>
             </div>

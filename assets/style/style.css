@@ -8,6 +8,7 @@ body {
 :root {
   /* Header 高度變數 (預設 100px) */
   --sw-header-height: 100px;
+  --sw-m-header-height: 55px;
   --sw-main-basic: #ff8800;
   --sw-main-dark: #702d00;
   --sw-btn-hover-bg: #fff8da;
@@ -19,7 +20,7 @@ body {
   --sw-body-font-family: -apple-system, Arial, "Segoe UI", Helvetica Neue, sans-serif;
   --sw-title-font-family: -apple-system, "Segoe UI", Helvetica Neue, Arial, sans-serif;
   --sw-topbar-fontsize: 0.9rem;
-  --sw-navbar-fontsize: 1rem;
+  --sw-navbar-fontsize: 1.05rem;
   --sw-nav-h6-fontsize: 1rem;
   --sw-nav-menu-fontsize: 0.95rem;
   --sw-banner-p-fontsize: 1.25rem;
@@ -59,12 +60,14 @@ a:focus {
 }
 .navbar-brand {
   font-family: var(--sw-body-font-family);
+  padding: 0;
 }
 
 /* 全螢幕遮罩 (Body Overlay) 樣式 --- */
 .body-overlay {
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -73,9 +76,13 @@ a:focus {
   visibility: hidden;
   transition: all 0.3s ease-in-out;
   pointer-events: none;
-  z-index: 1030;
+  z-index: 1040;
 }
-
+/* 顯示 body-overlay (由 JS 加上 .active) */
+.body-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
 /* Desktop：當 Header Wrapper 滑入選單時，js加入 menu-active 類別 */
 @media (min-width: 992px) {
   .header-wrapper.menu-active ~ .body-overlay {
@@ -144,14 +151,23 @@ a:focus {
   display: flex;
   justify-content: flex-end;
 }
+.top-bar ul li {
+  border-right: 1px solid #ccc;
+}
 .top-bar ul li a {
   padding: 1px 10px !important;
   color: #666;
-  border-right: 1px solid #ccc;
+  margin: 0 2px;
+  border-radius: 10px;
 }
 .top-bar ul li.nav-item:last-child a {
   border-right: none;
   font-weight: bold;
+}
+.top-bar ul li a:hover {
+  background-color: var(--sw-main-basic);
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
 }
 
 /* --- 主導航列 (Navbar) --- */
@@ -159,8 +175,7 @@ a:focus {
   padding: 0 !important;
 }
 .navbar {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0;
   font-family: var(--sw-title-font-family);
   height: 50px;
 }
@@ -200,27 +215,25 @@ a:focus {
   margin-top: 0px;
   padding-top: 0px;
 }
-
 .mega-menu-inner {
   padding-top: 2rem;
   padding-bottom: 2rem;
   background: #fff;
 }
-
 .navbar-nav .nav-item.dropdown-mega {
   padding: 0 20px;
 }
-.navbar-nav .dropdown-mega .dropdown-toggle {
-  padding: 20px 10px !important;
+.navbar-nav .nav-item.dropdown-mega .dropdown-toggle {
+  padding: 19px 10px !important;
 }
 .navbar-nav .nav-item.dropdown-mega .nav-link {
   box-sizing: border-box;
-  border-bottom: 3px solid transparent;
+  border-bottom: 4px solid transparent;
+  transition: border-bottom 0.3s;
 }
 .navbar-nav .nav-item.dropdown-mega:hover .nav-link {
-  border-bottom: 3px solid var(--sw-main-basic);
+  border-bottom: 4px solid var(--sw-main-basic);
 }
-
 .dropdown-mega .dropdown-groups-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -243,7 +256,6 @@ a:focus {
     margin-bottom: 20px;
   }
 }
-
 .dropdown-mega .dropdown-group:last-child {
   border-right: none;
 }
@@ -279,12 +291,13 @@ a:focus {
   display: block;
   line-height: 1.5;
   padding: 5px 7px;
-  transition: color 0.2s;
+  transition: background-color 0.2s;
   white-space: normal;
 }
 .dropdown-mega li.dropdown-item a:hover {
   color: var(--sw-main-dark);
   background-color: var(--sw-btn-hover-bg);
+  transition: background-color 0.5s ease-in-out;
 }
 .dropdown-mega .group-divider {
   margin: 1.5rem 0;
@@ -381,8 +394,8 @@ a:focus {
 @media (max-width: 991.98px) {
   .offcanvas.mobile-menu-custom {
     position: fixed; /* 變為 fixed */
-    top: 50px; /* 避開固定的 Navbar (50px) */
-    height: calc(100vh - 50px);
+    top: var(--sw-m-header-height);
+    height: calc(100vh - var(--sw-m-header-height));
     width: 100% !important;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
@@ -394,7 +407,7 @@ a:focus {
   /* 手機版 Navbar 固定在頂部 */
   .navbar {
     display: flex !important; /* 確保可見 */
-    height: 50px; /* 手機版固定高度 */
+    height: var(--sw-m-header-height); /* 手機版固定高度 */
     position: fixed; /* 固定在手機頂部 */
     top: 0;
     left: 0;
@@ -402,10 +415,6 @@ a:focus {
     z-index: 1050;
     background: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 增加陰影 */
-  }
-  /* 手機版 Header 高度變數修正 */
-  :root {
-    --sw-header-height: 50px;
   }
   /* 手機版隱藏 Top Bar */
   .top-bar {
@@ -432,7 +441,7 @@ a:focus {
 }
 /* 確保只有 offcanvas-body 的內容是滾動的 */
 .offcanvas-body {
-  padding-top: 0 !important;
+  padding: 0 !important;
   overflow-y: auto; /* 確保滾動條僅在內容區出現 */
 }
 
@@ -468,12 +477,19 @@ a:focus {
 .mobile-footer-links a:hover {
   background-color: var(--sw-main-basic-dark);
 }
-/* 選單無連結時 透明度50 */
+/* 選單無連結時 href 為 "#" 的 a 標籤 (判斷用) */
+header .navbar .dropdown-item a[href="#"],
+header .top-bar a.nav-link[href="#"] {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}
 
 /**
 === 3. main content ================= */
 main {
-  padding-top: 50px;
+  padding-top: var(--sw-m-header-height);
 }
 /* Desktop */
 @media (min-width: 992px) {
@@ -960,4 +976,77 @@ footer {
     margin-bottom: 20px;
     border-bottom: 1px solid #3d3d3d;
   }
+}
+
+/* 搜尋框 */
+/**
+=== 5. Full Width Search Bar==== */
+.full-width-search-bar {
+  /* 預設隱藏並定位在最上層 */
+  position: fixed;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  z-index: 1050; /* 確保它在 Navbar (z-index 約 1030) 和 Modal 之下 */
+  background-color: #fff;
+  padding: 15px 0;
+  /* 預設隱藏狀態 */
+  transform: translateY(-100%); /* 向上移動 100% 隱藏在視窗上方 */
+  opacity: 0;
+  visibility: hidden;
+  /* 過渡動畫 */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s;
+}
+/* 顯示狀態 (由 JS 加上 .active) */
+.full-width-search-bar.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+.search-content-wrapper {
+  /* 確保搜尋列內容與網頁內容對齊 */
+  max-width: 1400px; /* 假設您網站的最大寬度 */
+  margin: 0 auto;
+}
+.search-input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 15px;
+}
+.search-icon,
+.close-search-btn {
+  color: #666;
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+.search-input-field {
+  flex-grow: 1; /* 佔據大部分空間 */
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 5px 0;
+}
+.search-input-field::placeholder {
+  color: #aaa;
+}
+.close-search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 0;
+  padding: 0;
+  transition: color 0.2s;
+}
+.close-search-btn:hover {
+  color: #333;
+}
+/* 調整 Header Search 按鈕的樣式 (如果需要) */
+.search-toggle-btn {
+  color: #333; /* 設置按鈕顏色 */
+  transition: color 0.2s;
+}
+.search-toggle-btn:hover {
+  color: #ff8800; /* 懸停效果 */
 }
