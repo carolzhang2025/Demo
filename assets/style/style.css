@@ -10,9 +10,12 @@ body {
   --sw-header-height: 100px;
   --sw-main-basic: #ff8800;
   --sw-main-dark: #702d00;
+  --sw-btn-hover-bg: #fff8da;
   --sw-topbar-color: #4b4d4e;
-  --sw-navbar-color: #333;
+  --sw-navbar-color: #252525;
+  --sw-navbar2-color: #272727;
   --sw-bg-dark: #202020;
+  --sw-title-color: #202020;
   --sw-body-font-family: -apple-system, Arial, "Segoe UI", Helvetica Neue, sans-serif;
   --sw-title-font-family: -apple-system, "Segoe UI", Helvetica Neue, Arial, sans-serif;
   --sw-topbar-fontsize: 0.9rem;
@@ -29,8 +32,8 @@ body {
   /* mobile */
   --sw-m-banner-fontsize: 1.1rem;
   --sw-m-h1-fontsize: 1.7rem;
-  --sw-m-h2-fontsize: 1.2rem;
-  --sw-m-h3-fontsize: 2rem;
+  --sw-m-h2-fontsize: 1.4rem;
+  --sw-m-h3-fontsize: 1.2rem;
   --sw-m-pagecontent-fontsize: 1.05rem;
   --sw-m-footer-fontsize: 0.9rem;
 }
@@ -84,7 +87,6 @@ a:focus {
     height: calc(100vh - var(--sw-header-height));
   }
 }
-
 /* Desktop：offcanvas-backdrop 強制隱藏 --- */
 @media (min-width: 992px) {
   .offcanvas-backdrop {
@@ -92,7 +94,6 @@ a:focus {
     pointer-events: none !important;
   }
 }
-
 /* Desktop：Offcanvas 狀態控制--- */
 @media (min-width: 992px) {
   #offcanvasNavbar.offcanvas.show {
@@ -273,17 +274,17 @@ a:focus {
 }
 .dropdown-mega li.dropdown-item a {
   text-decoration: none;
-  color: #555;
+  color: var(--sw-navbar2-color);
   font-size: var(--sw-nav-menu-fontsize);
   display: block;
   line-height: 1.5;
-  padding: 2px 7px;
+  padding: 5px 7px;
   transition: color 0.2s;
   white-space: normal;
 }
 .dropdown-mega li.dropdown-item a:hover {
   color: var(--sw-main-dark);
-  background-color: rgb(255, 247, 229);
+  background-color: var(--sw-btn-hover-bg);
 }
 .dropdown-mega .group-divider {
   margin: 1.5rem 0;
@@ -416,7 +417,7 @@ a:focus {
   width: 100% !important;
 }
 
-/* 修正 1: 將 offcanvas-header 固定在 offcanvas 頂部 */
+/* 將 offcanvas-header 固定在 offcanvas 頂部 */
 .offcanvas-header {
   height: 50px !important; /* 強制高度 */
   padding: 0 1rem !important; /* 關鍵：移除上下的 padding，保留左右的 */
@@ -429,7 +430,7 @@ a:focus {
   background-color: white; /* 確保固定時不會透視 */
   justify-content: flex-start !important;
 }
-/* 修正 2: 確保只有 offcanvas-body 的內容是滾動的 */
+/* 確保只有 offcanvas-body 的內容是滾動的 */
 .offcanvas-body {
   padding-top: 0 !important;
   overflow-y: auto; /* 確保滾動條僅在內容區出現 */
@@ -467,6 +468,7 @@ a:focus {
 .mobile-footer-links a:hover {
   background-color: var(--sw-main-basic-dark);
 }
+/* 選單無連結時 透明度50 */
 
 /**
 === 3. main content ================= */
@@ -562,10 +564,33 @@ main {
   max-width: 90%;
 }
 
-/* 內容 */
-main .page-content h2 {
+/* main 主要內容 */
+main .page-content section {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+@media (min-width: 992px) {
+  main .page-content section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+/* @media (min-width: 992px) {
+  .main .page-content section {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+} */
+
+main h2 {
   font-size: var(--sw-m-h2-fontsize);
-  color: #202020;
+  color: var(--sw-title-color);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+main h3 {
+  font-size: var(--sw-m-h3-fontsize);
+  color: var(--sw-title-color);
   margin-bottom: 1rem;
   line-height: 1.6;
 }
@@ -575,13 +600,37 @@ main .page-content ul li {
   color: #202020;
   line-height: 1.8;
 }
+main .card {
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+}
+main .card.bg-1 {
+  background-color: rgb(0, 140, 158);
+  border: none;
+}
+main .card .card-title {
+  font-size: 1.1rem !important;
+  font-family: var(--sw-body-font-family);
+  color: var(--sw-title-color);
+  font-weight: 600;
+}
+main .card .card-text {
+  font-size: 0.95rem;
+}
 main .page-content .bg-gray {
   background-color: #f3f4f5;
 }
+main .img-rounded {
+  border-radius: 1rem;
+}
 /* Desktop First */
 @media (min-width: 992px) {
-  main .page-content h2 {
+  main h2 {
     font-size: var(--sw-h2-fontsize);
+    line-height: 1.6;
+  }
+  main h3 {
+    font-size: var(--sw-h3-fontsize);
     line-height: 1.6;
   }
   main .page-content p,
@@ -592,6 +641,187 @@ main .page-content .bg-gray {
   main .page-content ul li {
     line-height: 2.1;
   }
+  main .img-rounded {
+    border-radius: 2rem;
+  }
+}
+/* section-expert：Let's Talk*/
+main .expert-card-wrapper {
+  overflow: hidden; /* 確保圓角效果 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  min-height: 400px; /* 最小高度確保圖片有足夠空間 */
+}
+main .expert-card {
+  flex: 0 0 45%;
+  padding: 3rem;
+  border-radius: 2rem;
+  background-color: #fff;
+}
+main .expert-card-tagline {
+  font-size: 0.95rem;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+main .dot-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #ffc107; /* 黃色 */
+  border-radius: 50%;
+  margin-right: 8px;
+}
+main .expert-card-title {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+main .expert-card-text {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  max-width: 100%; /* 限制文字寬度 */
+}
+main .expert-card-button {
+  background-color: var(--sw-main-basic); /* #ff8800 */
+  color: #333;
+  padding: 0.75rem 1.8rem;
+  border-radius: 8px;
+  text-transform: none;
+  font-size: 1.05rem;
+  transition: background-color 0.2s;
+}
+main .expert-card-button:hover {
+  background-color: var(--sw-main-dark); /* #702d00 */
+  color: #fff;
+}
+@media (max-width: 991.98px) {
+  main .contact-expert-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  main .expert-card-wrapper {
+    flex-direction: column; /* 在平板/手機上垂直堆疊 */
+    min-height: auto;
+  }
+}
+
+/* --- product-intro-section --- */
+/**解決 Tab 切換高度跳動問題 */
+/* 1. 將 Tab 容器設為 Grid，讓子元素可以重疊 */
+.product-intro-section .tab-content {
+  display: grid;
+}
+/* 2. 設定所有 pane (包含隱藏的) */
+.product-intro-section .tab-content > .tab-pane {
+  /* 關鍵：讓所有 pane 位於同一個 grid 區域 (第一列第一欄)，造成重疊效果 */
+  grid-area: 1 / 1;
+  /* 關鍵：強制顯示所有區塊，這樣瀏覽器才能計算出最高的高度 */
+  /* 使用 !important 覆蓋 Bootstrap 預設的 display: none */
+  display: block !important;
+  /* 預設狀態：完全透明且不可見 (不佔據點擊事件) */
+  opacity: 0;
+  visibility: hidden;
+  /* 加入過渡動畫，讓切換更滑順 */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+/* 3. 設定作用中 (Active) 的 pane */
+.product-intro-section .tab-content > .tab-pane.active {
+  /* 顯示狀態：不透明且可見 */
+  opacity: 1;
+  visibility: visible;
+  /* 確保作用中的內容層級最高 (雖然 visibility 已處理，但加保險) */
+  z-index: 1;
+}
+
+/* --- 左側側邊選單 --- */
+.product-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+/* list button */
+.sidebar-link {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+  transition: all 0.2s;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  border-left: 4px solid transparent; /* 保持左側線條邏輯 */
+  outline: none;
+}
+.sidebar-link:hover {
+  background-color: var(--sw-btn-hover-bg);
+  color: var(--sw-main-dark);
+}
+
+/* Bootstrap 會自動加上 .active 類別，樣式保持不變 */
+.sidebar-link.active {
+  background-color: #fff;
+  color: var(--sw-main-basic);
+  border-left-color: var(--sw-main-basic);
+  font-weight: 700;
+}
+
+/* --- 右側內容 --- */
+.intro-title {
+  color: var(--sw-title-color); /* 使用圖片中的標題藍色 */
+  font-size: 1.75rem;
+  line-height: 1.4;
+}
+
+.intro-text p {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+/* 自定義按鈕樣式 */
+.btn-intro-primary {
+  background-color: #2c5986; /* 深藍色 */
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.btn-intro-primary:hover {
+  background-color: #1a3a5a; /* 更深的藍色 */
+  color: #fff;
+}
+
+/* --- Logo 卡片 --- */
+.brand-logo-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* 輕微陰影 */
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px; /* 確保卡片有足夠高度 */
+  border: 1px solid #eee;
+}
+@media (max-width: 991.98px) {
+  .product-sidebar {
+    background-color: #fff;
+    margin-bottom: 2rem;
+    /* border-radius: 8px; */
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  .intro-title {
+    font-size: 1.5rem;
+  }
+  .brand-logo-card {
+    min-height: auto;
+    padding: 3rem;
+    margin-top: 2rem;
+  }
 }
 
 /**
@@ -601,10 +831,6 @@ footer {
   background-color: var(--sw-main-basic);
   color: rgb(214, 214, 214);
 }
-
-/* ... (在 Hero Section 樣式之後) ... */
-
-/* RWD 調整 */
 @media (max-width: 991.98px) {
   .hero-section {
     min-height: auto;
@@ -619,36 +845,20 @@ footer {
     font-size: 1.1rem;
   }
 }
-
-/**
-=== 4. Footer ======================= */
-.footer-custom {
-  background-color: var(--sw-bg-dark); /* 使用 CSS 變數中的暗色背景 */
-  color: #c9c9c9; /* Light gray for body text */
-}
-
-/* 頂部 padding 調整，模仿圖片 */
-.footer-custom > .container:first-child {
-  padding-top: 5rem !important; /* Larger top padding */
-  padding-bottom: 3rem !important;
-}
-
 /* Branding */
+.footer-branding a {
+  text-decoration: none;
+  font-family: var(--sw-body-font-family);
+  font-weight: 700 !important;
+  font-size: 1rem;
+}
 .footer-logo-custom {
   /* 將 Logo 圖片濾鏡為白色，以確保在深色背景下可見 */
   filter: brightness(0) invert(1);
-  height: 25px !important;
-}
-.footer-tagline {
-  font-size: 1.8rem;
-  line-height: 1.2;
-  max-width: 80%;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 .footer-desc {
-  max-width: 85%;
-  font-size: 0.95rem;
+  /* max-width: 85%; */
+  font-size: 0.8rem;
   line-height: 1.6;
   color: #b0b0b0; /* Lighter gray than body text */
 }
@@ -661,23 +871,45 @@ footer {
 .footer-social-links a:hover {
   color: #fff !important;
 }
-
-/* Contact Info (Icons) */
 .footer-contact-info p {
   font-size: 0.9rem;
-  color: #c9c9c9;
+  color: #5e5e5e;
+  line-height: 1.7;
 }
-.footer-contact-info i {
-  /* 模仿圖片中的圖標與文字對齊 */
-  width: 20px;
+/* contact info */
+.footer-contact-info a,
+.footer-contact-info a i {
+  text-decoration: none;
+  color: #fff;
+}
+.footer-contact-info a:hover,
+.footer-contact-info a:hover i {
+  color: var(--sw-main-basic);
+}
+.footer_link {
+  /* 關鍵：使用 Flexbox 讓圖標和文字在同一行 */
+  display: flex;
+  align-items: flex-start; /* 讓 icon 和多行文字從頂部對齊 */
+}
+.footer_link-icon {
+  margin-top: 0.25rem;
+  /* 關鍵 1: 設定固定寬度 */
+  width: 15px;
+  /* 關鍵 2: 禁止其收縮，即使空間不足 */
+  flex-shrink: 0;
+  /* 讓圖標置中 */
   text-align: center;
-  margin-right: 5px;
-  color: #c9c9c9;
+  /* 確保 icon 右側有間距 */
+  margin-right: 8px;
+}
+/* 讓文字自動換行並填滿剩餘空間 */
+.footer_link-text {
+  flex-grow: 1;
 }
 
-/* Columns */
+/* Columns quick link*/
 .footer-column-title {
-  color: #fff; /* White title */
+  color: #999999; /* White title */
   font-weight: 700;
   font-size: 1rem;
   margin-bottom: 1.2rem;
@@ -693,21 +925,21 @@ footer {
   margin-bottom: 0.4rem;
 }
 .footer-link-list li a {
-  color: #c9c9c9;
+  color: #fff;
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s;
 }
 .footer-link-list li a:hover {
   color: var(--sw-main-basic); /* Hover effect with accent color */
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 /* Copyright Row */
 .footer-copyright-row {
   border-top: 1px solid #3d3d3d;
-  padding-top: 1.5rem !important;
-  padding-bottom: 1.5rem !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
   font-size: 0.85rem;
   color: #b0b0b0;
 }
