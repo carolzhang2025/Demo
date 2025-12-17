@@ -18,12 +18,12 @@ body {
   --sw-bg-dark: #202020;
   --sw-title-color: #202020;
   --sw-body-font-family: -apple-system, Arial, "Segoe UI", Helvetica Neue, sans-serif;
-  --sw-title-font-family: -apple-system, "Segoe UI", Helvetica Neue, Arial, sans-serif;
+  --sw-title-font-family: -apple-system, Helvetica Neue, Arial, sans-serif;
   --sw-topbar-fontsize: 0.9rem;
   --sw-navbar-fontsize: 1.05rem;
   --sw-nav-h6-fontsize: 1rem;
   --sw-nav-menu-fontsize: 0.95rem;
-  --sw-banner-p-fontsize: 1.25rem;
+  --sw-banner-p-fontsize: 1.3rem;
   --sw-h1-fontsize: 3rem;
   --sw-h2-fontsize: 2rem;
   --sw-h3-fontsize: 1.5rem;
@@ -518,6 +518,13 @@ main {
 /* --- Breadcrumb Wrapper 優化 --- */
 .breadcrumb-wrapper {
   display: none;
+  /* font-size: 0.85rem;
+  display: block;
+  font-weight: 400;
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  z-index: 10; */
 }
 /* Desktop */
 @media (min-width: 992px) {
@@ -525,7 +532,6 @@ main {
     font-size: 0.85rem;
     display: block;
     font-weight: 400;
-    /* 修改：改為絕對定位，讓它脫離 Flex 排列，固定在左上角 */
     position: absolute;
     top: 30px;
     left: 12px; /* 對齊 container padding (Bootstrap container padding-x is 0.75rem ~ 12px) */
@@ -534,50 +540,61 @@ main {
 }
 
 /* Hero Section & Breadcrumbs */
-.hero-section {
-  height: 500px;
+.hero-basic {
   display: flex;
   align-items: center;
   position: relative;
   z-index: 1;
   padding: 10px;
 }
+.hero-banner {
+  height: 400px;
+}
+.text-banner {
+  height: 180px;
+}
 /* Desktop */
 @media (min-width: 992px) {
-  .hero-section {
+  .hero-basic {
     padding: 0;
   }
+  .hero-banner {
+    height: 500px;
+  }
+  .text-banner {
+    height: 200px;
+  }
 }
-.hero-section h1 {
+.hero-basic h1 {
   font-family: var(--sw-title-font-family);
   font-size: var(--sw-m-h1-fontsize);
   line-height: 1.5;
 }
-.hero-section p {
+.hero-basic p {
   font-family: var(--sw-body-font-family);
   font-size: var(--sw-m-banner-fontsize);
   font-weight: 400;
 }
 /* Desktop */
 @media (min-width: 992px) {
-  .hero-section h1 {
+  .hero-basic h1 {
     font-size: var(--sw-h1-fontsize);
     line-height: 1.5;
   }
-  .hero-section p {
+  .hero-basic p {
     font-size: var(--sw-banner-p-fontsize);
   }
 }
 
 /* --- Hero Banner Content --- */
-.hero-banner-content {
+.hero-basic-content {
   width: 100%;
 }
 .hero-title {
   line-height: 1.2;
 }
 .hero-desc {
-  max-width: 90%;
+  max-width: 95%;
 }
 
 /* main 主要內容 */
@@ -635,6 +652,14 @@ main .card .card-text {
 }
 main .page-content .bg-gray {
   background-color: #f3f4f5;
+}
+main .page-content .bg-lg-gray {
+  background-color: #fff;
+}
+@media (min-width: 992px) {
+  main .page-content .bg-lg-gray {
+    background-color: #f3f4f5;
+  }
 }
 main .img-rounded {
   border-radius: 1rem;
@@ -848,7 +873,7 @@ footer {
   color: rgb(214, 214, 214);
 }
 @media (max-width: 991.98px) {
-  .hero-section {
+  .hero-banner {
     min-height: auto;
     padding-top: 20px;
     padding-bottom: 40px;
