@@ -27,6 +27,7 @@ body {
   --sw-h1-fontsize: 3rem;
   --sw-h2-fontsize: 2rem;
   --sw-h3-fontsize: 1.5rem;
+  --sw-remark-fontsize: 0.9rem;
   --sw-pagecontent-fontsize: 1.1rem;
   --sw-footer-fontsize: 0.9rem;
 
@@ -37,6 +38,7 @@ body {
   --sw-m-h3-fontsize: 1.2rem;
   --sw-m-pagecontent-fontsize: 1.05rem;
   --sw-m-footer-fontsize: 0.9rem;
+  --sw-m-remark-fontsize: 0.8rem;
 }
 body {
   overflow-x: hidden;
@@ -291,7 +293,7 @@ a:focus {
   display: block;
   line-height: 1.5;
   padding: 5px 7px;
-  transition: background-color 0.2s;
+  transition: background-color 0.1s;
   white-space: normal;
 }
 .dropdown-mega li.dropdown-item a:hover {
@@ -624,7 +626,7 @@ main h2 {
 main h3 {
   font-size: var(--sw-m-h3-fontsize);
   color: var(--sw-title-color);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.6;
 }
 main .page-content p,
@@ -632,6 +634,9 @@ main .page-content ul li {
   font-size: var(--sw-m-pagecontent-fontsize);
   color: #202020;
   line-height: 1.8;
+}
+main .page-content .text-remark {
+  font-size: var(--sw-m-remark-fontsize);
 }
 main .card {
   border-radius: 2rem;
@@ -647,11 +652,15 @@ main .card .card-title {
   color: var(--sw-title-color);
   font-weight: 600;
 }
-main .card .card-text {
+main .card .card-text,
+.navbar .card .card-text {
   font-size: 0.95rem;
+  line-height: 1.7;
 }
-main .page-content .bg-gray {
-  background-color: #f3f4f5;
+main .page-content .bg-gray,
+.navbar .card.bg-gray {
+  background-color: #f5f6f8;
+  border: none;
 }
 main .page-content .bg-lg-gray {
   background-color: #fff;
@@ -673,6 +682,10 @@ main .img-rounded {
   main h3 {
     font-size: var(--sw-h3-fontsize);
     line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  main .page-content .text-remark {
+    font-size: var(--sw-remark-fontsize);
   }
   main .page-content p,
   main .page-content ul li {
@@ -931,6 +944,7 @@ footer {
   /* 關鍵：使用 Flexbox 讓圖標和文字在同一行 */
   display: flex;
   align-items: flex-start; /* 讓 icon 和多行文字從頂部對齊 */
+  text-decoration: none !important;
 }
 .footer_link-icon {
   margin-top: 0.25rem;

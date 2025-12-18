@@ -8,7 +8,7 @@
     <meta name="description" content="Senwaiy specializes in comprehensive smart factory integration solutions. We partner with industry leaders to achieve efficient, reliable digital production, from low-level data acquisition to high-level decision analysis." />
     <meta name="title" content="Senwaiy: Smart Factory Solutions & Industrial IoT Platform Expert" />
     <title>Senwaiy: Smart Factory Solutions & Industrial IoT Platform Expert</title>
-    <link href="./assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/libs/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/libs/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="./assets/style/style.css" />
   </head>
@@ -40,7 +40,7 @@
       </div>
       <!-- Navbar --><!-- Main Desktop List-->
       <nav class="navbar navbar-expand-lg bg-white shadow-sm main-nav-container">
-        <div class="container">
+        <div class="container px-3">
           <a class="navbar-brand fw-bold fs-3 text-dark me-auto" href="index.html"> <img src="./assets/images/basic/logo_Senwaiy.svg" alt="Senwaiy" height="46" class="d-inline-block d-inline-block align-middle me-1 mb-1" />Senwaiy </a>
           <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
@@ -150,21 +150,33 @@
                 <a class="nav-link dropdown-toggle" href="#" id="nav_partners" role="button" data-bs-toggle="dropdown" aria-expanded="false">Partners</a>
                 <div class="dropdown-menu" aria-labelledby="nav_partners">
                   <div class="container mega-menu-inner">
-                    <div class="dropdown-groups-wrapper">
-                      <div class="dropdown-group">
-                        <h6 class="dropdown-group-title">Our Partners</h6>
-                        <ul class="dropdown-list">
-                          <li class="dropdown-item"><a href="partners/alliance-partners.html">Alliance Partners</a></li>
-                          <li class="dropdown-item"><a href="#">Channel Partners</a></li>
-                          <li class="dropdown-item"><a href="#">System Integrators</a></li>
-                        </ul>
+                    <div class="row">
+                      <div class="col col-6">
+                        <div class="card h-100 rounded-5 p-4 bg-gray">
+                          <div class="card-body">
+                            <h4 class="card-title mb-3"><i class="fa-solid fa-people-group fs-1 me-3"></i><span class="fw-bold">Partner Ecosystem</span></h4>
+                            <p class="card-text">Collaboration is at the heart of our success. By combining our technical expertise with the strengths of our global partners, we build a robust ecosystem that drives the future of smart manufacturing.</p>
+                          </div>
+                        </div>
                       </div>
-                      <div class="dropdown-group">
-                        <h6 class="dropdown-group-title">Partner Plan</h6>
-                        <ul class="dropdown-list">
-                          <li class="dropdown-item"><a href="#">Plan Overview</a></li>
-                          <li class="dropdown-item"><a href="#">Become a Partner</a></li>
-                        </ul>
+                      <div class="col col-6">
+                        <div class="dropdown-groups-wrapper ms-2">
+                          <div class="dropdown-group">
+                            <h6 class="dropdown-group-title">Our Partners</h6>
+                            <ul class="dropdown-list">
+                              <li class="dropdown-item"><a href="./partners/alliance-partners.html">Alliance Partners</a></li>
+                              <li class="dropdown-item"><a href="./partners/channel-partners.html">Channel Partners</a></li>
+                              <li class="dropdown-item"><a href="#">System Integrators</a></li>
+                            </ul>
+                          </div>
+                          <div class="dropdown-group">
+                            <h6 class="dropdown-group-title">Partner Plan</h6>
+                            <ul class="dropdown-list">
+                              <li class="dropdown-item"><a href="#">Plan Overview</a></li>
+                              <li class="dropdown-item"><a href="#">Become a Partner</a></li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -174,14 +186,27 @@
                 <a class="nav-link dropdown-toggle" href="#" id="nav_resourcehub" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resource Hub</a>
                 <div class="dropdown-menu" aria-labelledby="nav_resourcehub">
                   <div class="container mega-menu-inner">
-                    <div class="dropdown-groups-wrapper">
-                      <div class="dropdown-group">
-                        <h6 class="dropdown-group-title">Resource Hub</h6>
-                        <ul class="dropdown-list">
-                          <li class="dropdown-item"><a href="resource-hub/document-library.html">Document Library</a></li>
-                          <li class="dropdown-item"><a href="#">Software Download Center</a></li>
-                          <li class="dropdown-item"><a href="#">Training & Certification Courses</a></li>
-                        </ul>
+                    <div class="row">
+                      <div class="col col-6">
+                        <div class="card h-100 rounded-5 p-4 bg-gray">
+                          <div class="card-body">
+                            <h4 class="card-title mb-3"><i class="fa-solid fa-school fs-1 me-3"></i><span class="fw-bold">Technical Support & Resources</span></h4>
+                            <p class="card-text">Access our comprehensive Resource Hub to stay ahead. From technical documentation and software updates to specialized training, we provide the tools you need to optimize your smart factory operations.</p>
+                            <!-- <p class="card-text">We help customers across Asia solve complex challenges in smart manufacturing and system integration.</p> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col col-6">
+                        <div class="dropdown-groups-wrapper ms-2">
+                          <div class="dropdown-group">
+                            <h6 class="dropdown-group-title">Resource Hub</h6>
+                            <ul class="dropdown-list">
+                              <li class="dropdown-item"><a href="./resource-hub/document-library.html">Document Library</a></li>
+                              <li class="dropdown-item"><a href="#">Software Download Center</a></li>
+                              <li class="dropdown-item"><a href="#">Training & Certification Courses</a></li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -191,14 +216,28 @@
                 <a class="nav-link dropdown-toggle" href="#" id="nav_aboutus" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
                 <div class="dropdown-menu" aria-labelledby="nav_aboutus">
                   <div class="container mega-menu-inner">
-                    <div class="dropdown-groups-wrapper">
-                      <div class="dropdown-group">
-                        <h6 class="dropdown-group-title">About Us</h6>
-                        <ul class="dropdown-list">
-                          <li class="dropdown-item"><a href="about/about.html">About Senwaiy</a></li>
-                          <li class="dropdown-item"><a href="about/locations.html">Locations</a></li>
-                          <li class="dropdown-item"><a href="#">News Room</a></li>
-                        </ul>
+                    <div class="row">
+                      <div class="col col-6">
+                        <div class="card h-100 rounded-5 p-4 bg-gray">
+                          <div class="card-body">
+                            <h4 class="card-title mb-3"><i class="fa-solid fa-handshake fs-1 me-3"></i><span class="fw-bold">Your Trusted Partner</span></h4>
+                            <p class="card-text">With years of expertise as a trusted partner in industrial automation, Senwaiy is a leading provider of integrated products and end-to-end solutions.</p>
+                            <p class="card-text">We help customers across Asia solve complex challenges in smart manufacturing and system integration.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col col-6">
+                        <div class="dropdown-groups-wrapper ms-2">
+                          <div class="dropdown-group">
+                            <h6 class="dropdown-group-title">About Us</h6>
+                            <ul class="dropdown-list">
+                              <li class="dropdown-item"><a href="./about/about.html">About Senwaiy</a></li>
+                              <li class="dropdown-item"><a href="./about/locations.html">Locations</a></li>
+                              <li class="dropdown-item"><a href="#">News Room</a></li>
+                              <li class="dropdown-item"><a href="about/privacy-policy.html">Privacy Policy</a></li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -330,9 +369,10 @@
             <div id="m-aboutus" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion">
               <div class="accordion-body bg-light p-0">
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item bg-light border-0"><a href="#" class="text-dark text-decoration-none ps-3">About Senwaiy</a></li>
-                  <li class="list-group-item bg-light border-0"><a href="#" class="text-dark text-decoration-none ps-3">Locations</a></li>
-                  <li class="list-group-item bg-light border-0"><a href="#" class="text-dark text-decoration-none ps-3">News Room</a></li>
+                  <li class="list-group-item bg-light border-0"><a class="text-dark text-decoration-none ps-3" href="./about/about.html">About Senwaiy</a></li>
+                  <li class="list-group-item bg-light border-0"><a class="text-dark text-decoration-none ps-3" href="./about/locations.html">Locations</a></li>
+                  <li class="list-group-item bg-light border-0"><a class="text-dark text-decoration-none ps-3" href="#">News Room</a></li>
+                  <li class="list-group-item bg-light border-0"><a class="text-dark text-decoration-none ps-3" href="./about/privacy-policy.html">Privacy Policy</a></li>
                 </ul>
               </div>
             </div>
@@ -365,8 +405,8 @@
 
           <div class="hero-banner-content">
             <div class="row align-items-center">
-              <div class="col-lg-7 pb-2 pt-5">
-                <h1 class="hero-title fw-bold mb-1 mb-lg-4">Transform Operations Through Intelligent Digital Ecosystems</h1>
+              <div class="col-10 col-lg-6 pb-2 pt-3">
+                <h1 class="hero-title fw-bold mb-1 mb-lg-3">Transform Operations Through Intelligent Digital Ecosystems</h1>
                 <p class="hero-desc">Connect data, empower teams, and accelerate smarter decision-making across the entire asset lifecycle.</p>
                 <a href="#" class="btn btn-light fw-bold px-4 py-2">Start your journey</a>
               </div>
@@ -405,6 +445,7 @@
             </div>
           </div>
         </section>
+
         <section class="bg-gray">
           <div class="container">
             <div class="row gx-6">
@@ -639,9 +680,9 @@
               <div class="col-12 col-md-3 mb-3 mb-md-0">
                 <h6 class="footer-column-title">Partners</h6>
                 <ul class="footer-link-list">
-                  <li><a href="./senwaiy/partner/plan-overview.html">Program Overview</a></li>
-                  <li><a href="./senwaiy/partners/alliance-partners.html">Alliance Partners</a></li>
-                  <li><a href="./senwaiy/partners/partners/ channel-partners.html">Channel Partners</a></li>
+                  <li><a href="./partner/plan-overview.html">Program Overview</a></li>
+                  <li><a href="./partners/alliance-partners.html">Alliance Partners</a></li>
+                  <li><a href="./partners/partners/ channel-partners.html">Channel Partners</a></li>
                   <!-- <li><a href="#">System Integrators</a></li> -->
                 </ul>
               </div>
@@ -649,9 +690,9 @@
               <div class="col-12 col-md-3 mb-3 mb-md-0">
                 <h6 class="footer-column-title">Company</h6>
                 <ul class="footer-link-list">
-                  <li><a href="./senwaiy/about/about.html">About Us</a></li>
-                  <li><a href="./senwaiy/about/locations.html">Locations</a></li>
-                  <li><a href="./senwaiy/about/news.html">News Room</a></li>
+                  <li><a href="./about/about.html">About Us</a></li>
+                  <li><a href="./about/locations.html">Locations</a></li>
+                  <li><a href="./about/news.html">News Room</a></li>
                 </ul>
               </div>
             </div>
