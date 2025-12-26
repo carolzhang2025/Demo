@@ -47,7 +47,7 @@
     --sw-header-height: 100px; /* Desktop fallback */
     --sw-banner-p-fontsize: 1.3rem;
     --sw-h1-fontsize: 3rem;
-    --sw-h2-fontsize: 1.7rem;
+    --sw-h2-fontsize: 2rem;
     --sw-h3-fontsize: 1.5rem;
     --sw-h4-fontsize: 1.2rem;
     --sw-remark-fontsize: 0.9rem;
@@ -575,6 +575,7 @@ main .breadcrumb-item.active {
 main .breadcrumb-item + .breadcrumb-item::before {
   color: rgba(255, 255, 255, 0.6);
 }
+
 /* Breadcrumb Wrapper */
 main .breadcrumb-wrapper {
   display: none;
@@ -585,65 +586,29 @@ main .breadcrumb-wrapper {
     display: block;
     font-weight: 400;
     position: absolute;
-    top: 25px;
+    top: 30px;
     left: 12px;
     z-index: 10;
   }
 }
 
 /* Hero Section */
-/* 讓 Section 有固定高度或最小高度，否則圖片抽離後會沒高度 */
-/* 設定 Section 基本容器 */
 main .hero-basic {
+  display: flex;
+  align-items: center;
   position: relative;
-  padding: 0;
-}
-/* 讓圖片填滿整個底層 */
-main .hero-bg-wrapper,
-main .hero-bg-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-main .hero-bg-img {
-  object-fit: cover; /* 關鍵：保持比例並填滿 */
-  object-position: center; /* 圖片對齊中間 */
-}
-/* 獨立的漸層遮罩層 */
-main .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   z-index: 1;
-  background: linear-gradient(to right, rgba(4, 22, 31, 0.7) 0%, rgba(4, 22, 31, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+  padding: 10px;
 }
 main .hero-banner {
-  min-height: 600px; /* 電腦版最小高度 */
-  height: 50vh; /* 或是使用視窗高度比例 */
+  height: 400px;
 }
-main .text-banner {
-  height: 250px;
-}
-/* 手機版微調 */
-@media (max-width: 767px) {
+@media (min-width: 992px) {
+  main .hero-basic {
+    padding: 0;
+  }
   main .hero-banner {
-    min-height: 400px; /* 手機版文字較多時可調整高度 */
-    height: 45vh;
-  }
-  main .text-banner {
-    height: 200px;
-  }
-  /* 手機版可以考慮將漸層改為由下往上，以增加文字可讀性 */
-  main .hero-overlay {
-    background: linear-gradient(to bottom, rgba(10, 18, 29, 0.8) 0%, rgba(2, 11, 15, 0.2) 40%, rgba(4, 22, 31, 0.9) 100%);
-  }
-  main .breadcrumb-item {
-    font-size: 14px;
+    height: 500px;
   }
 }
 
@@ -661,7 +626,6 @@ main .hero-basic p {
 /* Hero Content Layout */
 main .hero-banner-content {
   width: 100%;
-  margin-top: 0rem;
 }
 main .hero-title {
   line-height: 1.2;
@@ -675,17 +639,14 @@ main .hero-desc {
     padding-top: 20px;
     padding-bottom: 40px;
   }
-  main .hero-banner-content {
-    margin-top: 1.5rem;
-  }
   main .hero-desc {
     max-width: 95%;
   }
 }
 @media (max-width: 991.98px) {
   main .hero-banner .container {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
   main .hero-banner-content .row {
     margin-left: 0;
@@ -721,12 +682,12 @@ main h3,
 main h4,
 main h5 {
   color: var(--sw-title-color);
-  line-height: 1.65;
+  line-height: 1.6;
   font-weight: 600;
 }
 main h2 {
   font-size: var(--sw-h2-fontsize);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 main h3 {
   font-size: var(--sw-h3-fontsize);
@@ -740,7 +701,7 @@ main .page-content p,
 main .page-content ul li {
   font-size: var(--sw-pagecontent-fontsize);
   color: var(--sw-content-color);
-  line-height: 1.85;
+  line-height: 1.8;
 }
 /* Desktop line-height adjustment */
 @media (min-width: 992px) {
@@ -748,51 +709,9 @@ main .page-content ul li {
     line-height: 2.1;
   }
 }
+
 main .page-content .text-remark {
   font-size: var(--sw-remark-fontsize);
-}
-
-/* 讓圖片填滿容器高度，且不變形 */
-/* 讓文字區塊垂直居中，並確保它能決定整體高度 */
-main .text-content-warpper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  padding: 0;
-}
-/* 圖片容器：在電腦版（大螢幕）設為絕對定位以對齊左側高度 */
-main .img-warpper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 300px;
-  overflow: hidden;
-}
-/* 讓圖片像背景一樣填滿容器 */
-main .img-warpper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 關鍵：保持比例裁切填滿 */
-  object-position: center;
-  display: block;
-}
-/* RWD 響應式調整 */
-@media (max-width: 991.98px) {
-  /* 手機版取消絕對定位，改回一般顯示模式 */
-  main .img-warpper {
-    height: 250px;
-    min-height: auto;
-  }
-  .img-warpper img {
-    position: relative;
-  }
-  main .text-content-warpper {
-    padding: 0;
-  }
 }
 
 /* Cards & Backgrounds */
@@ -821,9 +740,6 @@ main .page-content .bg-gray {
 main .page-content .bg-lg-gray {
   background-color: #fff;
 }
-main .img-rounded {
-  border-radius: 1rem;
-}
 @media (min-width: 992px) {
   main .page-content .bg-lg-gray {
     background-color: var(--sw-bg-lightgray);
@@ -831,6 +747,9 @@ main .img-rounded {
   main .img-rounded {
     border-radius: 2rem;
   }
+}
+main .img-rounded {
+  border-radius: 1rem;
 }
 
 /**

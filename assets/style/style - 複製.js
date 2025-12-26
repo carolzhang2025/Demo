@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const headerWrapper = document.querySelector(".header-wrapper");
   const dropdownMegaItems = document.querySelectorAll(".dropdown-mega");
+
+  // --- Custom Menu Button JS ---
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const offcanvasElement = document.getElementById("offcanvasNavbar");
+
   if (mobileMenuBtn && offcanvasElement) {
     // 當 offcanvas 被開啟時，為按鈕添加 active 類別 (變成 X)
     offcanvasElement.addEventListener("show.bs.offcanvas", function () {
@@ -13,7 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileMenuBtn.classList.remove("active");
     });
   }
-  //選單遮罩背景
+  // --- 結束 Custom Menu Button JS ---
+
+  // --- 動態計算 Header 高度 ---
+  const updateHeaderHeight = () => {
+    if (headerWrapper) {
+      // offsetHeight 會包含 padding 和 border，是準確的物理高度
+      const height = headerWrapper.offsetHeight;
+      document.documentElement.style.setProperty("--sw-header-height", `${height}px`);
+    }
+  };
+  // 初始化與 Resize 時執行
+  updateHeaderHeight();
+  window.addEventListener("resize", updateHeaderHeight);
+  // ---------------------------------
   if (window.innerWidth >= 992) {
     dropdownMegaItems.forEach((item) => {
       item.addEventListener("mouseenter", () => {
@@ -53,6 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isOpen) {
       searchBar.classList.add("active");
       searchBodyOverlay.classList.add("active");
+
+      // 延遲聚焦
       setTimeout(() => {
         searchInput.focus();
       }, 300);
@@ -62,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       searchInput.blur();
     }
   }
-
+  // --- 1. 綁定開/關按鈕事件 ---
   // 點擊 Search Icon (放大鏡) 顯示
   if (openSearchBtn) {
     openSearchBtn.addEventListener("click", function (e) {
@@ -76,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleSearch(false);
     });
   }
-
+  // --- 2. 修正：監聽點擊外部關閉邏輯 ---
   // 監聽整個文件上的點擊事件
   document.addEventListener("click", function (event) {
     // 只有當搜尋框是開啟狀態時才進行判斷
